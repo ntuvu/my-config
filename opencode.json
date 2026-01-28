@@ -2,17 +2,15 @@
   "$schema": "https://opencode.ai/config.json",
   "plugin": [
     "opencode-antigravity-auth@latest",
-    "oh-my-opencode@3.1.1"
+    "oh-my-opencode@latest"
   ],
   "provider": {
     "google": {
-      "name": "Google",
       "models": {
-        "antigravity-gemini-3-pro": {
-          "name": "Gemini 3 Pro (Antigravity)",
+        "antigravity-claude-opus-4-5-thinking": {
           "limit": {
-            "context": 1048576,
-            "output": 65535
+            "context": 200000,
+            "output": 64000
           },
           "modalities": {
             "input": [
@@ -24,17 +22,67 @@
               "text"
             ]
           },
+          "name": "Claude Opus 4.5 Thinking (Antigravity)",
           "variants": {
             "low": {
-              "thinkingLevel": "low"
+              "thinkingConfig": {
+                "thinkingBudget": 8192
+              }
             },
-            "high": {
-              "thinkingLevel": "high"
+            "max": {
+              "thinkingConfig": {
+                "thinkingBudget": 32768
+              }
+            }
+          }
+        },
+        "antigravity-claude-sonnet-4-5": {
+          "limit": {
+            "context": 200000,
+            "output": 64000
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "pdf"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "name": "Claude Sonnet 4.5 (Antigravity)"
+        },
+        "antigravity-claude-sonnet-4-5-thinking": {
+          "limit": {
+            "context": 200000,
+            "output": 64000
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "pdf"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "name": "Claude Sonnet 4.5 Thinking (Antigravity)",
+          "variants": {
+            "low": {
+              "thinkingConfig": {
+                "thinkingBudget": 8192
+              }
+            },
+            "max": {
+              "thinkingConfig": {
+                "thinkingBudget": 32768
+              }
             }
           }
         },
         "antigravity-gemini-3-flash": {
-          "name": "Gemini 3 Flash (Antigravity)",
           "limit": {
             "context": 1048576,
             "output": 65536
@@ -49,9 +97,10 @@
               "text"
             ]
           },
+          "name": "Gemini 3 Flash (Antigravity)",
           "variants": {
-            "minimal": {
-              "thinkingLevel": "minimal"
+            "high": {
+              "thinkingLevel": "high"
             },
             "low": {
               "thinkingLevel": "low"
@@ -59,86 +108,365 @@
             "medium": {
               "thinkingLevel": "medium"
             },
+            "minimal": {
+              "thinkingLevel": "minimal"
+            }
+          }
+        },
+        "antigravity-gemini-3-pro": {
+          "limit": {
+            "context": 1048576,
+            "output": 65535
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "pdf"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "name": "Gemini 3 Pro (Antigravity)",
+          "variants": {
             "high": {
               "thinkingLevel": "high"
-            }
-          }
-        },
-        "antigravity-claude-sonnet-4-5": {
-          "name": "Claude Sonnet 4.5 (Antigravity)",
-          "limit": {
-            "context": 200000,
-            "output": 64000
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image",
-              "pdf"
-            ],
-            "output": [
-              "text"
-            ]
-          }
-        },
-        "antigravity-claude-sonnet-4-5-thinking": {
-          "name": "Claude Sonnet 4.5 Thinking (Antigravity)",
-          "limit": {
-            "context": 200000,
-            "output": 64000
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image",
-              "pdf"
-            ],
-            "output": [
-              "text"
-            ]
-          },
-          "variants": {
-            "low": {
-              "thinkingConfig": {
-                "thinkingBudget": 8192
-              }
             },
-            "max": {
-              "thinkingConfig": {
-                "thinkingBudget": 32768
-              }
-            }
-          }
-        },
-        "antigravity-claude-opus-4-5-thinking": {
-          "name": "Claude Opus 4.5 Thinking (Antigravity)",
-          "limit": {
-            "context": 200000,
-            "output": 64000
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image",
-              "pdf"
-            ],
-            "output": [
-              "text"
-            ]
-          },
-          "variants": {
             "low": {
-              "thinkingConfig": {
-                "thinkingBudget": 8192
-              }
-            },
-            "max": {
-              "thinkingConfig": {
-                "thinkingBudget": 32768
-              }
+              "thinkingLevel": "low"
             }
           }
         }
+      },
+      "name": "Google"
+    },
+    "proxy": {
+      "models": {
+        "gemini-2.5-flash": {
+          "limit": {
+            "context": 880964,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "pdf"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "name": "proxy/gemini-2.5-flash"
+        },
+        "gemini-2.5-flash-lite": {
+          "limit": {
+            "context": 880964,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "pdf"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "name": "proxy/gemini-2.5-flash-lite"
+        },
+        "gemini-3-flash-preview": {
+          "limit": {
+            "context": 880964,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "pdf"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "name": "proxy/gemini-3-flash-preview",
+          "options": {
+            "generationConfig": {
+              "thinkingConfig": {
+                "includeThoughts": true,
+                "thinkingLevel": "medium"
+              }
+            }
+          },
+          "reasoning": true,
+          "variants": {
+            "high": {
+              "thinkingLevel": "high"
+            },
+            "low": {
+              "thinkingLevel": "low"
+            },
+            "medium": {
+              "thinkingLevel": "medium"
+            }
+          }
+        },
+        "gemini-3-pro-image-preview": {
+          "limit": {
+            "context": 880964,
+            "output": 65536
+          },
+          "name": "proxy/gemini-3-pro-image-preview"
+        },
+        "gemini-3-pro-preview": {
+          "limit": {
+            "context": 880964,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "pdf"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "name": "proxy/gemini-3-pro-preview",
+          "options": {
+            "generationConfig": {
+              "thinkingConfig": {
+                "includeThoughts": true,
+                "thinkingLevel": "medium"
+              }
+            }
+          },
+          "reasoning": true,
+          "variants": {
+            "high": {
+              "thinkingLevel": "high"
+            },
+            "low": {
+              "thinkingLevel": "low"
+            },
+            "medium": {
+              "thinkingLevel": "medium"
+            }
+          }
+        },
+        "gemini-claude-opus-4-5-thinking": {
+          "limit": {
+            "context": 168000,
+            "output": 64000
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "pdf"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "name": "proxy/gemini-claude-opus-4-5-thinking",
+          "options": {
+            "thinking": {
+              "budgetTokens": 8192,
+              "type": "enabled"
+            }
+          },
+          "reasoning": true,
+          "variants": {
+            "low": {
+              "thinkingConfig": {
+                "thinkingBudget": 8192
+              }
+            },
+            "max": {
+              "thinkingConfig": {
+                "thinkingBudget": 32768
+              }
+            }
+          }
+        },
+        "gemini-claude-sonnet-4-5": {
+          "limit": {
+            "context": 168000,
+            "output": 64000
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "pdf"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "name": "proxy/gemini-claude-sonnet-4-5"
+        },
+        "gemini-claude-sonnet-4-5-thinking": {
+          "limit": {
+            "context": 168000,
+            "output": 64000
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "pdf"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "name": "proxy/gemini-claude-sonnet-4-5-thinking",
+          "options": {
+            "thinking": {
+              "budgetTokens": 8192,
+              "type": "enabled"
+            }
+          },
+          "reasoning": true,
+          "variants": {
+            "low": {
+              "thinkingConfig": {
+                "thinkingBudget": 8192
+              }
+            },
+            "max": {
+              "thinkingConfig": {
+                "thinkingBudget": 32768
+              }
+            }
+          }
+        },
+        "gpt-5": {
+          "limit": {
+            "context": 336000,
+            "output": 32768
+          },
+          "name": "proxy/gpt-5",
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "reasoning": true
+        },
+        "gpt-5-codex": {
+          "limit": {
+            "context": 336000,
+            "output": 32768
+          },
+          "name": "proxy/gpt-5-codex",
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "reasoning": true
+        },
+        "gpt-5-codex-mini": {
+          "limit": {
+            "context": 336000,
+            "output": 32768
+          },
+          "name": "proxy/gpt-5-codex-mini",
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "reasoning": true
+        },
+        "gpt-5.1": {
+          "limit": {
+            "context": 336000,
+            "output": 32768
+          },
+          "name": "proxy/gpt-5.1",
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "reasoning": true
+        },
+        "gpt-5.1-codex": {
+          "limit": {
+            "context": 336000,
+            "output": 32768
+          },
+          "name": "proxy/gpt-5.1-codex",
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "reasoning": true
+        },
+        "gpt-5.1-codex-max": {
+          "limit": {
+            "context": 336000,
+            "output": 32768
+          },
+          "name": "proxy/gpt-5.1-codex-max",
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "reasoning": true
+        },
+        "gpt-5.1-codex-mini": {
+          "limit": {
+            "context": 336000,
+            "output": 32768
+          },
+          "name": "proxy/gpt-5.1-codex-mini",
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "reasoning": true
+        },
+        "gpt-5.2": {
+          "limit": {
+            "context": 336000,
+            "output": 32768
+          },
+          "name": "proxy/gpt-5.2",
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "reasoning": true
+        },
+        "gpt-5.2-codex": {
+          "limit": {
+            "context": 336000,
+            "output": 32768
+          },
+          "name": "proxy/gpt-5.2-codex",
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "reasoning": true
+        },
+        "gpt-oss-120b-medium": {
+          "limit": {
+            "context": 107520,
+            "output": 16384
+          },
+          "name": "proxy/gpt-oss-120b-medium"
+        },
+        "tab_flash_lite_preview": {
+          "limit": {
+            "context": 107520,
+            "output": 16384
+          },
+          "name": "proxy/tab-flash-lite-preview"
+        }
+      },
+      "name": "cliproxy",
+      "npm": "@ai-sdk/anthropic",
+      "options": {
+        "apiKey": "363636",
+        "baseURL": "http://127.0.0.1:8317/v1",
+        "includeUsage": true
       }
     }
   }
