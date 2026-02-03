@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
+  "agents": {
+    "sisyphus": {
+      "model": "cliproxy/claude-opus-4-5",
+      "variant": "max"
+    },
+    "oracle": {
+      "model": "cliproxy/gpt-5.2",
+      "variant": "high"
+    },
+    "librarian": {
+      "model": "cliproxy/glm-4.7"
+    },
+    "explore": {
+      "model": "cliproxy/claude-haiku-4-5"
+    },
+    "multimodal-looker": {
+      "model": "cliproxy/gemini-3-flash"
+    },
+    "prometheus": {
+      "model": "cliproxy/claude-opus-4-5",
+      "variant": "max"
+    },
+    "metis": {
+      "model": "cliproxy/claude-opus-4-5",
+      "variant": "max"
+    },
+    "momus": {
+      "model": "cliproxy/gpt-5.2",
+      "variant": "medium"
+    },
+    "atlas": {
+      "model": "cliproxy/claude-sonnet-4-5"
+    }
+  },
+  "categories": {
+    "visual-engineering": {
+      "model": "cliproxy/gemini-3-pro"
+    },
+    "ultrabrain": {
+      "model": "cliproxy/gpt-5.2-codex",
+      "variant": "xhigh"
+    },
+    "artistry": {
+      "model": "cliproxy/gemini-3-pro",
+      "variant": "max"
+    },
+    "quick": {
+      "model": "cliproxy/claude-haiku-4-5"
+    },
+    "unspecified-low": {
+      "model": "cliproxy/claude-sonnet-4-5"
+    },
+    "unspecified-high": {
+      "model": "cliproxy/claude-opus-4-5",
+      "variant": "max"
+    },
+    "writing": {
+      "model": "cliproxy/gemini-3-flash"
+    }
+  }
+}
