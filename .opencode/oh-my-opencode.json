@@ -1,110 +1,72 @@
 {
   "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
-  "google_auth": false,
-  "claude_code": {
-    "mcp": false,
-    "commands": false,
-    "skills": false,
-    "agents": false,
-    "hooks": false
-  },
-  "sisyphus_agent": {
-    "disabled": false,
-    "default_builder_enabled": true,
-    "planner_enabled": true,
-    "replace_plan": true
-  },
-  "git_master": {
-    "commit_footer": false,
-    "include_co_authored_by": false
+  "lsp": {
+    "typescript-language-server": {
+      "disabled": true
+    },
+    "pylsp": {
+      "disabled": true
+    },
+    "rust-analyzer": {
+      "disabled": true
+    }
   },
   "agents": {
     "sisyphus": {
-      "model": "proxy/gemini-claude-opus-4-5-thinking",
-      "prompt_append": "ALWAYS USE THE QUESTION TOOL IF YOU NEED TO ASK USER.",
-      "permission": {
-        "question": "allow"
-      }
+      "model": "proxy/claude-opus-4-6-thinking"
     },
-    "sisyphus-junior": {
-      "model": "proxy/gemini-3-flash-preview"
-    },
-    "prometheus": {
-      "model": "proxy/gemini-claude-opus-4-5-thinking",
-      "prompt_append": "ALWAYS USE THE QUESTION TOOL IF YOU NEED TO ASK USER.",
-      "permission": {
-        "question": "allow"
-      }
-    },
-    "metis": {
-      "model": "proxy/gemini-claude-opus-4-5-thinking",
-      "prompt_append": "ALWAYS USE THE QUESTION TOOL IF YOU NEED TO ASK USER.",
-      "permission": {
-        "question": "allow"
-      }
-    },
-    "momus": {
-      "model": "proxy/gpt-5.2"
-    },
-    "atlas": {
-      "model": "proxy/gemini-claude-sonnet-4-5-thinking",
-      "prompt_append": "ALWAYS USE THE QUESTION TOOL IF YOU NEED TO ASK USER.",
-      "permission": {
-        "question": "allow"
-      }
+    "hephaestus": {
+      "model": "proxy/gpt-5.2-codex"
     },
     "oracle": {
       "model": "proxy/gpt-5.2"
     },
     "librarian": {
-      "model": "proxy/gemini-claude-sonnet-4-5"
+      "model": "proxy/gemini-3-flash"
     },
     "explore": {
-      "model": "proxy/gemini-3-flash-preview"
-    },
-    "frontend-ui-ux-engineer": {
-      "model": "proxy/gemini-3-pro-preview"
-    },
-    "document-writer": {
-      "model": "proxy/gemini-3-flash-preview"
+      "model": "proxy/gemini-3-flash"
     },
     "multimodal-looker": {
-      "model": "proxy/gemini-3-flash-preview"
+      "model": "proxy/gemini-3-flash"
+    },
+    "prometheus": {
+      "model": "proxy/claude-opus-4-6-thinking"
+    },
+    "metis": {
+      "model": "proxy/claude-opus-4-6-thinking"
+    },
+    "momus": {
+      "model": "proxy/gpt-5.2"
+    },
+    "atlas": {
+      "model": "proxy/claude-sonnet-4-5"
     }
   },
   "categories": {
     "visual-engineering": {
-      "model": "proxy/gemini-3-pro-preview"
+      "model": "proxy/gemini-3-pro-high"
     },
     "ultrabrain": {
-      "model": "proxy/gpt-5.2-codex"
+      "model": "proxy/gpt-5.3-codex"
+    },
+    "deep": {
+      "model": "proxy/gpt-5.3-codex"
     },
     "artistry": {
-      "model": "proxy/gemini-3-pro-preview"
+      "model": "proxy/gemini-3-pro-high"
     },
     "quick": {
-      "model": "proxy/gemini-3-flash-preview"
-    },
-    "most-capable": {
-      "model": "proxy/gemini-claude-opus-4-5-thinking"
-    },
-    "writing": {
-      "model": "proxy/gemini-3-flash-preview"
-    },
-    "business-logic": {
-      "model": "proxy/gpt-5.2"
-    },
-    "general": {
-      "model": "proxy/gemini-claude-opus-4-5-thinking"
-    },
-    "debug": {
-      "model": "proxy/gpt-5.2"
+      "model": "proxy/gemini-2.5-flash-lite"
     },
     "unspecified-low": {
-      "model": "proxy/gemini-claude-sonnet-4-5"
+      "model": "proxy/claude-sonnet-4-5"
     },
     "unspecified-high": {
-      "model": "proxy/gemini-claude-opus-4-5-thinking"
+      "model": "proxy/claude-opus-4-6-thinking"
+    },
+    "writing": {
+      "model": "proxy/gemini-3-flash"
     }
   }
 }
