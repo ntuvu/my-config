@@ -5,8 +5,6 @@ description: >-
   IMPORTANT: searches for literal code patterns (like grep), not keywords — use actual code that would appear in files.
   Use `search` with --use-regexp for flexible regex patterns (prefix with (?s) for multiline).
   Filter by --lang, --repo, or --path to narrow results. No API key required.
-context: fork
-agent: use-tool
 ---
 
 Find real-world code patterns across 1M+ public GitHub repositories using the local grepapp script. Run:

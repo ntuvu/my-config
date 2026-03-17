@@ -5,8 +5,6 @@ description: >-
   Use `web-search` to find current information, news, facts, or answers about any topic — returns clean text from top results.
   Use `code-context` for any programming question (API usage, library examples, code snippets, debugging) — searches GitHub, Stack Overflow, and official docs.
   Use `crawl` when you have an exact URL and need its full text content and metadata.
-context: fork
-agent: use-tool
 ---
 
 Search the web or find code context using the local Exa script. Run:
