@@ -14,8 +14,6 @@ allowedTools:
   - "Glob"
   - "Grep"
   - "Bash(*)"
-  - "WebFetch(*)"
-  - "WebSearch(*)"
   - "Skill"
 ---
 
