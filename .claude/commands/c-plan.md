@@ -1,67 +1,29 @@
 ---
-name: c-plan
-description: Create a structured execution plan file in .claude/plans/ for a feature or task, ready for human review before implementation
-argument-hint: <feature-name or description>
-model: opus
+description: Tạo technical plan chi tiết (research + codebase analysis + solution design + review) bằng a-planner. Chỉ lập kế hoạch, không implement code.
+argument-hint: [technical-request]
+model: haiku
 ---
 
-Create an execution plan for: **$ARGUMENTS**
+# c-plan
 
-## Step 1 — Read context
+Tạo một plan self-contained, bám sát `CLAUDE.md`, và lưu vào `plans/*.md`.
 
-Read both files in parallel before doing anything else:
-- `.claude/docs/plan-execution-guide.md` — execution algorithm (parallel vs sequential phases)
-- `.claude/schemas/plan-schema.json` — structure reference
+## Rules
 
-## Step 2 — Generate plan file name
+1. Chỉ tạo plan, tuyệt đối không implement code.
+2. Ưu tiên token efficiency: ngắn gọn, không lặp.
+3. Bắt buộc dùng Agent tool để gọi `a-planner`, không dùng bash để gọi agent.
+4. Kết quả trả về cho user chỉ gồm:
+   - Summary ngắn
+   - Kết luận review (`GO`, `HOLD`, hoặc `NO-GO`)
+   - File path plan
 
-Convert $ARGUMENTS to a descriptive slug: lowercase, spaces → hyphens, remove special characters.
+## Workflow
 
-Examples:
-- "Create user authentication" → `create-user-authentication`
-- "Refactor API layer" → `refactor-api-layer`
-- "Add dark mode support" → `add-dark-mode-support`
-
-Target file: `.claude/plans/<slug>.md`
-
-## Step 3 — Invoke planning agent
-
-Use the Agent tool to call the `a-plan` subagent with this prompt:
-
-```
-Create a structured execution plan for: $ARGUMENTS
-
-Save the completed plan to: .claude/plans/<slug>.md
-
-Requirements:
-- Analyze the task and identify what can be done in parallel vs sequentially
-- Design phases that maximize parallelism (tasks with no dependencies → same PARALLEL phase)
-- Use {{task_id}} notation for cross-task dependencies
-- Be specific enough that a subagent can execute each task independently without further clarification
-- Always end with a verification phase
-- Use the structure from .claude/schemas/plan-schema.json as reference
-- Read .claude/docs/plan-execution-guide.md for the execution algorithm context
-```
-
-## Step 4 — Confirm and summarize
-
-After the agent writes the file, display:
-
-```
-✅ Plan created: .claude/plans/<slug>.md
-
-📋 Plan Summary:
-  Objective : <one line>
-  Phases    : <N> phases
-  Tasks     : <N> total tasks
-  Parallel  : Phases <list>
-  Sequential: Phases <list>
-
-👉 Review the plan, then run:
-   /implement <slug>
-```
-
-## Critical constraint
-
-⛔ **Do NOT begin any implementation.** This command creates the plan file only.
-The human must review `.claude/plans/<slug>.md` and explicitly run `/implement` to proceed.
+1. Đọc yêu cầu từ `$ARGUMENTS`.
+2. Nếu `$ARGUMENTS` rỗng, hỏi user yêu cầu kỹ thuật cần lập plan.
+3. Gọi agent:
+   - `subagent_type`: `a-planner`
+   - `description`: `Create and review a self-contained technical plan`
+   - `prompt`: Bao gồm yêu cầu người dùng, nhấn mạnh `YAGNI`, `KISS`, `DRY`, và chỉ được tạo plan.
+4. Chờ agent hoàn tất rồi trả kết quả ngắn gọn theo đúng format.
